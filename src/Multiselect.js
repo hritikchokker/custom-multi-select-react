@@ -16,13 +16,20 @@ export default function Multiselect() {
         "https://jsonplaceholder.typicode.com/users/1/todos"
       );
       const data = await res.json();
-      setDropdownData(data);
+      return data;
     } catch (err) {}
   }
   useLayoutEffect(() => {
-    try {
-      // fetchData();
-    } catch (err) {}
+    const res = async () => {
+      try {
+        const result = await fetchData();
+        if (result) {
+          console.log(result, "res");
+          setDropdownData(result);
+        }
+      } catch (err) {}
+    };
+    // res();
   });
   return (
     <>
