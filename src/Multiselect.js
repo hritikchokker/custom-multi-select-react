@@ -19,7 +19,7 @@ export default function Multiselect() {
       return data;
     } catch (err) {}
   }
-  useLayoutEffect(() => {
+  useEffect(() => {
     const res = async () => {
       try {
         const result = await fetchData();
@@ -30,7 +30,7 @@ export default function Multiselect() {
       } catch (err) {}
     };
     // res();
-  });
+  }, []);
   return (
     <>
       <Multiselectoption dropDownData={dropDownData} />
