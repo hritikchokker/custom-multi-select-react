@@ -21,7 +21,7 @@ export default function Multiselect() {
   }
   useLayoutEffect(() => {
     try {
-      fetchData();
+      // fetchData();
     } catch (err) {}
   });
   return (
