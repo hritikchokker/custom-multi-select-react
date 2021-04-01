@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 export default function Multiselectoption({ dropDownData }) {
   const [selectedItems, setSelectedItem] = useState([]);
   const [inputEl, setInputEl] = useState("");
-
   const handleSelectChange = event => {
     const { value, name } = event.target;
     if (!selectedItems.find(el => el.toLowerCase() === value.toLowerCase())) {
@@ -43,7 +42,7 @@ export default function Multiselectoption({ dropDownData }) {
           type="text"
         />
       </div>
-      <label for="cars">Choose a car:</label>
+      <label htmlFor="cars">Choose a car:</label>
       <select onChange={handleSelectChange} name="cars" multi="true" multiple>
         {dropDownData.forEach(element => {
           console.log(element, "sss");
