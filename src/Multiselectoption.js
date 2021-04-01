@@ -5,10 +5,12 @@ export default function Multiselectoption({ dropDownData, update }) {
   const [inputEl, setInputEl] = useState("");
   useEffect(() => {}, []);
   const handleSelectChange = event => {
-    const { value, name } = event.target;
-    if (!selectedItems.find(el => el.toLowerCase() === value.toLowerCase())) {
+    const { name, value } = event.target;
+    const { id } = value;
+    console.log(value, "sjsjs");
+    if (!selectedItems.find(el => el.id === id)) {
       const items = selectedItems;
-      items.push(value);
+      items.push(JSON.parse(value));
       // items.unshift(value);
       setSelectedItem(items);
     }
@@ -65,6 +67,10 @@ export default function Multiselectoption({ dropDownData, update }) {
     //   update(helperDropDown);
     // }
   };
+  const submitHandler = () => {
+    console.log(selectedItems, "selected items");
+    alert(JSON.stringify(selectedItems));
+  };
 
   return (
     <>
@@ -81,7 +87,7 @@ export default function Multiselectoption({ dropDownData, update }) {
         {dropDownData.map((element, index) => {
           return (
             <>
-              <option key={index} value={element.id}>
+              <option key={index} value={JSON.stringify(element)}>
                 {element.title}
               </option>
             </>
@@ -90,6 +96,7 @@ export default function Multiselectoption({ dropDownData, update }) {
         {dropDownData.length === 0 ? <>No data found</> : <></>}
       </select>
       <p> hold down ctrl(command for mac) key to select multiple item</p>
+      <button onClick={submitHandler}>Submit</button>
     </>
   );
 }
